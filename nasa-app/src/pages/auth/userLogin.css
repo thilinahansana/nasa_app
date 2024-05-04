@@ -1,0 +1,17 @@
+.rotate-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg); /* Rotate the image */
+  animation: rotateAnimation 100s linear infinite; /* Adjust duration and timing function as needed */
+}
+
+/* Define the rotation animation */
+@keyframes rotateAnimation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg); /* Start rotation from 0 degrees */
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg); /* End rotation at 360 degrees */
+  }
+}

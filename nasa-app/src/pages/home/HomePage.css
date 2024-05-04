@@ -1,0 +1,24 @@
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.dot-animation {
+  animation: wave 1s infinite;
+}
+
+.cover-img {
+  animation: wave 3s infinite;
+}
+
+.wave-animation {
+  display: inline-block;
+  animation: wave 3s infinite alternate;
+}
