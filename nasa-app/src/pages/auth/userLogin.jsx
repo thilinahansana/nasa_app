@@ -27,7 +27,7 @@ function UserLogin({ setIsLoggedIn }) {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "https://nasa-app-api-one.vercel.app/api/v1/users/login",
+        "/api/v1/users/login",
         { email, password }
       );
       console.log("Login successful:", response);
