@@ -16,7 +16,7 @@ const app = express();
 //implement CORS: allows CORS for all incoming requests to our API.
 app.use(
   cors({
-    origin: "https://nasa-app-frontend-ivory.vercel.app",
+    origin: "https://nasa-app-api-one.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
   })
