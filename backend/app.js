@@ -13,10 +13,10 @@ const userRouter = require("./Routes/userRouter");
 
 const app = express();
 
-//implement CORS: allows CORS for all incoming requests to our API.
+// Implement CORS: Allow CORS for all incoming requests to our API.
 app.use(
   cors({
-    origin: "https://nasa-app-api-one.vercel.app",
+    origin: "https://nasa-app-frontend-ivory.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
   })
