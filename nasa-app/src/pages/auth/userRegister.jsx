@@ -32,7 +32,7 @@ const UserRegister = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/users/signup",
+        "nasa-app-api-one.vercel.app/api/v1/users/signup",
         {
           email,
           password,
