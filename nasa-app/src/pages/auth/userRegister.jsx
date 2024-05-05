@@ -32,7 +32,7 @@ const UserRegister = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/users/signup",
+        "https://nasa-app-server.onrender.com/api/v1/users/signup",
         {
           email,
           password,
