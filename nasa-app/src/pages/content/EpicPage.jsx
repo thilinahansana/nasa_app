@@ -61,6 +61,8 @@ const EpicPage = () => {
             className="p-2 bg-black shadow-lg rounded-lg border border-gray-800"
           >
             <Image
+              isZoomed
+              isBlurred
               src={`https://api.nasa.gov/EPIC/archive/natural/${image.date.slice(
                 0,
                 4

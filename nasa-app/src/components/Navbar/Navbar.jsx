@@ -99,7 +99,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
                   : "foreground"
               }
               className="w-full font-semibold text-xl text-white"
-              href="/apod"
+              href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
               onClick={() => handleMenuItemClick(item)}
             >
               {item}
