@@ -86,7 +86,7 @@ function UserLogin({ setIsLoggedIn }) {
             Login
           </Button>
           <div className="flex flex-col justify-center items-center mb-4">
-            <Link to="/forgot-password">Forget Password?</Link>
+            <Link to="/">Forget Password?</Link>
             <div className="text-white">Or sign in with:</div>
           </div>
           <div className="flex justify-center">
