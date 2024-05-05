@@ -13,7 +13,7 @@ const userRouter = require("./Routes/userRouter");
 
 const app = express();
 
-//implement CORS: allows CORS for all incoming requests to our API.
+// Implement CORS: Allow CORS for all incoming requests to our API.
 app.use(cors());
 
 app.options("*", cors()); //all resources
@@ -40,9 +40,18 @@ app.use(mongoSanitize());
 // Data sanitization against XSS
 app.use(xss());
 
-// 3) ROUTES
+// Serve static files
+app.use(express.static(path.join(__dirname, "public")));
+
+// Route for API
 app.use("/api/v1/users", userRouter);
 
+// Wildcard route to serve React app
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+});
+
+// Error handler for undefined routes
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
