@@ -16,14 +16,17 @@ import { useNavigate } from "react-router-dom";
 
 export default function NavBar({ isLoggedIn, handleLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("Home");
+  const [activeItem, setActiveItem] = useState("APOD");
   const navigate = useNavigate();
   const menuItems = ["Home", "APOD", "Mars Rover", "Epic", "Images"];
 
   const handleMenuItemClick = (item) => {
+    localStorage.setItem("Homevalue", item);
     setActiveItem(item);
     setIsMenuOpen(false);
   };
+
+  const getItem = localStorage.getItem("Homevalue");
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -48,7 +51,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
               href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
               onClick={() => handleMenuItemClick(item)}
               className={`${
-                activeItem === item
+                getItem === item
                   ? "font-semibold bg-gradient-to-r from-green-400 to-cyan-200 text-transparent bg-clip-text"
                   : ""
               }`}
@@ -91,16 +94,14 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`} className="z-0">
             <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              className="w-full font-semibold text-lg text-white"
+              color="foreground"
               href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
               onClick={() => handleMenuItemClick(item)}
+              className={` text-lg font-semibold ${
+                getItem === item
+                  ? "font-semibold bg-gradient-to-r from-green-400 to-cyan-200 text-transparent bg-clip-text"
+                  : "text-white"
+              }`}
             >
               {item}
             </Link>
