@@ -32,10 +32,12 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
-        <NavbarBrand>
-          <FaEarthAsia className="text-green-300 text-3xl" />
-          <SiNasa className="ml-2 text-6xl" />
-        </NavbarBrand>
+        <Link href="/home" className="text-white">
+          <NavbarBrand>
+            <FaEarthAsia className="text-green-300 text-3xl" />
+            <SiNasa className="ml-2 text-6xl" />
+          </NavbarBrand>
+        </Link>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
