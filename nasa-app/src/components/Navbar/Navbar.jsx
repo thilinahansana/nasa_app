@@ -87,9 +87,9 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
         )}
       </NavbarContent>
 
-      <NavbarMenu className="bg-black">
+      <NavbarMenu className="bg-black backdrop-blur-sm">
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem key={`${item}-${index}`} className="z-0">
             <Link
               color={
                 index === 2
@@ -98,7 +98,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
                   ? "danger"
                   : "foreground"
               }
-              className="w-full font-semibold text-xl text-white"
+              className="w-full font-semibold text-lg text-white"
               href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
               onClick={() => handleMenuItemClick(item)}
             >
