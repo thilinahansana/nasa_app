@@ -46,11 +46,6 @@ app.use(mongoSanitize());
 // Data sanitization against XSS
 app.use(xss());
 
-app.use(express.json());
-
-app.get("/" , (req,res) =>{
- res.json("Hello") 
-})
 
 // 3) ROUTES
 app.use("/api/v1/users", userRouter);
