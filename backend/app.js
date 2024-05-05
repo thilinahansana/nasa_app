@@ -46,7 +46,10 @@ app.use(mongoSanitize());
 // Data sanitization against XSS
 app.use(xss());
 
-
+export default function handler(request, response) {
+  const { name = 'World' } = request.query;
+  return response.send(`Hello ${name}!`);
+}
 // 3) ROUTES
 app.use("/api/v1/users", userRouter);
 
