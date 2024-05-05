@@ -40,6 +40,10 @@ app.use(mongoSanitize());
 // Data sanitization against XSS
 app.use(xss());
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 // 3) ROUTES
 app.use("/api/v1/users", userRouter);
 
