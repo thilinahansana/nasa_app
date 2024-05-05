@@ -26,7 +26,7 @@ mongoose
   });
 
 // Run this system on port 3000
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8000;
 
 //start server
 const server = app.listen(port, () => {
