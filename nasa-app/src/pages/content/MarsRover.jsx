@@ -94,30 +94,32 @@ const MarsRoverPage = () => {
                   width={300}
                   height={300}
                   className="m-2"
-                  onClick={() => openModal(index)} // Make sure index is passed here
+                  onClick={() => openModal(photo.src)} // Make sure index is passed here
                 />
               )}
             />
           </div>
         )}
 
-        {/* <Modal
+        <Modal
           isOpen={isOpen}
           onClose={closeModal}
           fullWidth
           padding="0"
-          className="overflow-hidden"
+          className="overflow-hidden h-auto w-full"
         >
           <ModalContent>
-            <ModalBody>
-              <img
-                src={photos[currentImageIndex]?.src}
+            <ModalBody className="bg-slate-400">
+              <Image
+                isBlurred
+                isZoomed
+                src={currentImageIndex}
                 alt=""
-                className="w-full h-auto object-contain"
+                className="w-full h-full object-contain justify-center items-center"
               />
             </ModalBody>
           </ModalContent>
-        </Modal> */}
+        </Modal>
       </div>
     </div>
   );

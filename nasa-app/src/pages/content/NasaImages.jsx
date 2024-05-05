@@ -3,7 +3,13 @@ import axios from "axios";
 import { HashLoader } from "react-spinners";
 import { css } from "@emotion/react";
 import { PhotoAlbum } from "react-photo-album";
-import { Image } from "@nextui-org/react";
+import {
+  Image,
+  Modal,
+  ModalBody,
+  ModalContent,
+  useDisclosure,
+} from "@nextui-org/react";
 
 const API_KEY = "YOUR_NASA_API_KEY";
 
@@ -17,6 +23,8 @@ const NASAImages = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [color, setColor] = useState("#ffffff");
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -34,8 +42,18 @@ const NASAImages = () => {
     fetchImages();
   }, []);
 
+  const openModal = (index) => {
+    console.log("Opening modal with index:", index);
+    setCurrentImageIndex(index);
+    onOpen();
+  };
+
+  const closeModal = () => {
+    onClose();
+  };
+
   return (
-    <div className="container mx-auto p-4 h-full ">
+    <div className="container mx-auto p-4 h-full">
       <h1 className="text-4xl lg:text-6xl md:text-5xl font-bold mb-4 text-center">
         <span className="bg-gradient-to-r from-green-400 to-cyan-500 text-transparent bg-clip-text">
           NASA
@@ -71,11 +89,31 @@ const NASAImages = () => {
                 height={300}
                 alt=""
                 className="w-full h-auto m-2"
+                onClick={() => openModal(photo.src)}
               />
             </div>
           )}
         />
       )}
+      <Modal
+        isOpen={isOpen}
+        onClose={closeModal}
+        fullWidth
+        padding="0"
+        className="overflow-hidden h-auto w-full"
+      >
+        <ModalContent>
+          <ModalBody className="bg-slate-400">
+            <Image
+              isBlurred
+              isZoomed
+              src={currentImageIndex}
+              alt=""
+              className="w-full h-full object-contain justify-center items-center"
+            />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </div>
   );
 };
