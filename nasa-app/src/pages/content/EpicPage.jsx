@@ -15,6 +15,7 @@ const EpicPage = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [color, setColor] = useState("#ffffff");
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchImages = async () => {
       let url = "https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY";
@@ -39,7 +40,7 @@ const EpicPage = () => {
   };
 
   const renderImageGallery = () => {
-    if (!images) {
+    if (loading) {
       return (
         <div className="flex flex-col items-center justify-center h-[50vh]">
           <HashLoader
@@ -53,8 +54,16 @@ const EpicPage = () => {
       );
     }
 
+    if (!images || images.length === 0) {
+      return (
+        <p className="text-center text-white">
+          No images available for the selected date.
+        </p>
+      );
+    }
+
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {images.map((image) => (
           <div
             key={image.identifier}
@@ -87,9 +96,22 @@ const EpicPage = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen p-4">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl lg:text-6xl md:text-5xl font-bold mb-8 text-center">
+    <div className="relative bg-black min-h-screen p-4">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src="https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274_1280.jpg"
+          alt="Background Cover"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Overlay to darken the background */}
+      <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-3xl mx-auto">
+        <h1 className="text-3xl lg:text-6xl md:text-5xl font-bold mb-8 text-center text-white">
           <span className="bg-gradient-to-r from-green-400 to-cyan-500 text-transparent bg-clip-text">
             EPIC
           </span>{" "}
@@ -103,7 +125,7 @@ const EpicPage = () => {
             label="Select Date"
             value={selectedDate}
             onChange={handleDateChange}
-            className="w-44"
+            className="w-44 text-white"
           />
         </div>
 

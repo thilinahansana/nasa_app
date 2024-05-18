@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
-    <div className="h-screen flex flex-col lg:flex-row justify-center items-center">
+    <div className="home-page h-screen flex flex-col lg:flex-row justify-center items-center">
       <div className="w-full flex justify-center lg:justify-center items-center">
         <div className="text-center lg:text-right">
-          <div className="justify-center lg:justify-center items-center ">
-            <h1 className="text-4xl sm:text-6xl lg:text-6xl font-bold md:text-6xl text-center">
+          <div className="justify-center lg:justify-center items-center">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold md:text-6xl text-center">
               Embark on an
               <span className="bg-gradient-to-r from-green-400 to-cyan-500 text-transparent bg-clip-text">
                 {" "}

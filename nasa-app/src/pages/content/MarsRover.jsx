@@ -2,16 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { HashLoader } from "react-spinners";
 import { css } from "@emotion/react";
-import {
-  Button,
-  Image,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  useDisclosure,
-} from "@nextui-org/react";
+import { Image } from "@nextui-org/react";
 import PhotoAlbum from "react-photo-album";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 const API_KEY = "dyicH92gpL25xYNO44a7BwIm7Zphv4ZGgpT70HhZ";
 
@@ -25,7 +19,7 @@ const MarsRoverPage = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -52,16 +46,29 @@ const MarsRoverPage = () => {
   const openModal = (index) => {
     console.log("Opening modal with index:", index);
     setCurrentImageIndex(index);
-    onOpen();
+    setOpen(true);
   };
 
   const closeModal = () => {
-    onClose();
+    setOpen(false);
   };
 
   return (
-    <div className="min-h-screen p-8">
-      <div className="max-w-6xl mx-auto">
+    <div className="relative min-h-screen p-8">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src="https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274_1280.jpg"
+          alt="Background Cover"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Overlay to darken the background */}
+      <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto">
         <h1 className="text-3xl lg:text-6xl md:text-5xl font-bold mb-4 text-white text-center">
           Latest Photos from{" "}
           <span className="bg-gradient-to-r from-green-400 to-cyan-500 text-transparent bg-clip-text">
@@ -93,33 +100,20 @@ const MarsRoverPage = () => {
                   alt=""
                   width={300}
                   height={300}
-                  className="m-2"
-                  onClick={() => openModal(photo.src)} // Make sure index is passed here
+                  className="m-2 cursor-pointer"
+                  onClick={() => openModal(index)} // Pass the correct index to openModal
                 />
               )}
             />
           </div>
         )}
 
-        <Modal
-          isOpen={isOpen}
-          onClose={closeModal}
-          fullWidth
-          padding="0"
-          className="overflow-hidden h-auto w-full"
-        >
-          <ModalContent>
-            <ModalBody className="bg-slate-400">
-              <Image
-                isBlurred
-                isZoomed
-                src={currentImageIndex}
-                alt=""
-                className="w-full h-full object-contain justify-center items-center"
-              />
-            </ModalBody>
-          </ModalContent>
-        </Modal>
+        <Lightbox
+          open={open}
+          close={closeModal}
+          slides={photos.map((photo) => ({ src: photo.src }))}
+          index={currentImageIndex} // Set the current index
+        />
       </div>
     </div>
   );

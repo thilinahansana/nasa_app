@@ -22,3 +22,43 @@
   display: inline-block;
   animation: wave 3s infinite alternate;
 }
+
+.home-page {
+  background-image: url("https://cdn.pixabay.com/photo/2018/08/15/13/10/galaxy-3608029_1280.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.text-center,
+.text-right {
+  z-index: 1;
+}
+
+.home-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Optional: adds a dark overlay */
+  z-index: 0;
+}
+
+.text-center h1,
+.text-center p {
+  position: relative;
+  z-index: 2;
+}
+
+button {
+  position: relative;
+  z-index: 2;
+}
+
+.cover-img {
+  position: relative;
+  z-index: 2;
+}

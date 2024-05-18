@@ -29,7 +29,10 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
   const getItem = localStorage.getItem("Homevalue");
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      onMenuOpenChange={setIsMenuOpen}
+      className="bg-transparent bg-none backdrop-blur-lg shadow-md"
+    >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
