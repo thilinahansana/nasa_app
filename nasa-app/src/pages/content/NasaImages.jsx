@@ -50,7 +50,7 @@ const NASAImages = () => {
   return (
     <div className="relative bg-black min-h-screen p-4">
       {/* Background image */}
-      <div className="absolute w-full">
+      <div className="absolute">
         <img
           src="https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274_1280.jpg"
           alt="Background Cover"
