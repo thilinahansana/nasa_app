@@ -15,7 +15,6 @@
     "@emotion/styled": "^11.11.5",
     "@nextui-org/react": "^2.3.6",
     "@nextui-org/theme": "^2.2.3",
-    "axios": "^1.6.8",
     "axios-mock-adapter": "^1.22.0",
     "framer-motion": "^11.1.7",
     "react": "^18.2.0",
@@ -27,6 +26,7 @@
     "yet-another-react-lightbox": "^3.17.5"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.24.5",
     "@babel/preset-react": "^7.24.1",
     "@testing-library/jest-dom": "^6.4.5",
     "@testing-library/react": "^15.0.7",
@@ -36,6 +36,7 @@
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
+    "axios": "^1.6.8",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
