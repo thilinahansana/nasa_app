@@ -50,7 +50,7 @@ const NASAImages = () => {
   return (
     <div className="relative bg-black min-h-screen p-4">
       {/* Background image */}
-      <div className="absolute">
+      <div className="absolute w-full">
         <img
           src="https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274_1280.jpg"
           alt="Background Cover"
@@ -59,7 +59,7 @@ const NASAImages = () => {
       </div>
 
       {/* Overlay to darken the background */}
-      <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+      {/* <div className="absolute inset-0 bg-black bg-opacity-70"></div> */}
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto p-4">
