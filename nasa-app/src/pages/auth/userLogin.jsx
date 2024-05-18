@@ -3,6 +3,7 @@ import googleicon from "../../assets/google.svg";
 import facebookicon from "../../assets/facebook.svg";
 import appleicon from "../../assets/apple.svg";
 import pageimage from "../../assets/LoginCover.svg";
+
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Input, Button } from "@nextui-org/react";
@@ -44,7 +45,12 @@ function UserLogin({ setIsLoggedIn }) {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row bg-black  h-screen overflow-hidden ">
+    <div
+      className="flex flex-col lg:flex-row bg-black  h-screen overflow-hidden "
+      style={{
+        backgroundImage: `url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`,
+      }} // Set the background image
+    >
       {/* Left Section */}
       <div className="flex-1 relative">
         <div className="absolute top-0 left-10 flex justify-center items-center z-50">
